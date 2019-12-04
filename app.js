@@ -1,17 +1,28 @@
-var budgetController = (function () {
-    'use strict';
+// BUDGET CONTROLLER
+const budgetController = (function () {
 
 
 })();
 
 
-var UIController = (function () {
+// UI CONTROLLER
+const UIController = (function () {
 
 
 })();
 
 
-var controller = (function (budgetCtrl, UICtrl) {
+// MAIN APPLICATION CONTROLLER
+const controller = (function (budgetCtrl, UICtrl) {
 
+    document.querySelector('.add-btn').addEventListener('click', function () {
+        //  1. Get Input Data
+        //  2. Add item on main controller
+        //  3. Add item on UI
+        //  4. Calculate Budget
+        //  5. Display the Budget on UI
+
+    });
 
 })(budgetController, UIController);
+
