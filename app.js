@@ -25,15 +25,22 @@ const UIController = (function () {
             return DOMStrings;
         }
     };
-
-
-})
-();
+})();
 
 
 // MAIN APPLICATION CONTROLLER
 const controller = (function (budgetCtrl, UICtrl) {
-    var DOM = UICtrl.getDomStrings();
+
+    var setupEventListeners = function () {
+        var DOM = UICtrl.getDomStrings();
+        document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+        document.addEventListener('keypress', function (event) {
+            if (event.key === "Enter" || event.keyCode === 13 || event.which === 13) {
+                ctrlAddItem();
+            }
+        });
+    };
+
     // console.log(DOM);
     var ctrlAddItem = function () {
         //  1. Get Input Data
@@ -42,20 +49,16 @@ const controller = (function (budgetCtrl, UICtrl) {
         //  3. Add item on UI
         //  4. Calculate Budget
         //  5. Display the Budget on UI
-        console.log(input);
     };
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 
-
-    document.addEventListener('keypress', function (event) {
-
-
-        if (event.key === "Enter" || event.keyCode === 13 || event.which === 13) {
-            ctrlAddItem();
+    return {
+        init: function () {
+            console.log("Application has Started");
+            setupEventListeners();
         }
-
-    });
+    }
 
 })(budgetController, UIController);
 
+controller.init();
