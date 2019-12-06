@@ -1,5 +1,12 @@
+/*
+ *  Created by Christos Ploutarchou.
+ *  Date: 6/12/19, 11:26 μ.μ.
+ *  File : app.js
+ *
+ */
+
 // BUDGET CONTROLLER
-const budgetController = (function () {
+var budgetController = (function () {
     var Expense = function (id, description, value) {
         this.id = id;
         this.description = description;
@@ -18,19 +25,45 @@ const budgetController = (function () {
     var data = {
         allItems: {
             exp: [],
-            inx: []
+            inc: []
         },
         totals: {
             exp: 0,
             inc: 0
         }
+    };
+    return {
+        addItem: function (type, desc, val) {
+            var newItem;
+            //Create New id
+            console.log(type);
+            if (data.allItems[type].length > 0) {
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            } else {
+                ID = 0;
+            }
+            //Create new item based on type
+            if (type === 'exp') {
+                newItem = new Expense(ID, desc, val);
 
-    }
+
+            } else if (type === 'inc') {
+                newItem = new Income(ID, desc, val);
+            }
+            //Push item on data structure
+            data.allItems[type].push(newItem);
+
+            //Return the new Element
+            return newItem;
+        }, testing: function () {
+            console.log(data);
+        }
+    };
 })();
 
 
 // UI CONTROLLER
-const UIController = (function () {
+var UIController = (function () {
     var DOMStrings = {
         inputType: '.add-type',
         inputDescription: '.add-description',
@@ -53,7 +86,7 @@ const UIController = (function () {
 
 
 // MAIN APPLICATION CONTROLLER
-const controller = (function (budgetCtrl, UICtrl) {
+var controller = (function (budgetCtrl, UICtrl) {
 
     var setupEventListeners = function () {
         var DOM = UICtrl.getDomStrings();
@@ -67,9 +100,11 @@ const controller = (function (budgetCtrl, UICtrl) {
 
     // console.log(DOM);
     var ctrlAddItem = function () {
+        var input, newItem;
         //  1. Get Input Data
-        var input = UICtrl.getInput();
+        input = UICtrl.getInput();
         //  2. Add item on main controller
+        newItem = budgetCtrl.addItem(input.type, input.description, input.value)
         //  3. Add item on UI
         //  4. Calculate Budget
         //  5. Display the Budget on UI
