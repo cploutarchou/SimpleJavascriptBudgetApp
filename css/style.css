@@ -339,3 +339,10 @@ h2 {
 .unpaid:hover .item-description {
     font-weight: 900;
 }
+
+/**********************************************
+*** Sweetalert Theming
+**********************************************/
+.swal-overlay {
+    background-color: rgba(220, 220, 220, 0.4);
+}

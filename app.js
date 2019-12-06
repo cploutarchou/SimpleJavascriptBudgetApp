@@ -167,7 +167,13 @@ var controller = (function (budgetCtrl, UICtrl) {
             UICtrl.clearFields();
             //  5. Calculate and Update Budget on UI
         } else {
-
+            swal({
+                title: "Something Going Wrong!",
+                text: "Please Try again!",
+                icon: "error",
+                button: "Exit!",
+                dangerMode: true,
+            });
         }
     };
 
