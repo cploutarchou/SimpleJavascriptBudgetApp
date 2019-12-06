@@ -1,3 +1,11 @@
+/*
+ *  Created by Christos Ploutarchou.
+ *  Email : cploutarchou@gmail.com
+ *  Date: 7/12/19, 12:23 π.μ.
+ *  File : style.css
+ *
+ */
+
 /**********************************************
 *** GENERAL CSS
 **********************************************/
@@ -177,7 +185,7 @@ body {
     font-size: 35px;
     background: none;
     border: none;
-    color: #28B9B5;
+    color: mediumseagreen;
     cursor: pointer;
     display: inline-block;
     vertical-align: middle;
@@ -193,7 +201,7 @@ body {
 .add-description:focus,
 .add-value:focus {
     outline: none;
-    border: 1px solid #28B9B5;
+    border: 1px solid mediumseagreen;
 }
 
 .add-btn:focus {
@@ -228,7 +236,7 @@ h2 {
 }
 
 .income-title {
-    color: #28B9B5;
+    color: mediumseagreen;
 }
 
 .expenses-title {
@@ -272,7 +280,7 @@ h2 {
 
 .income .item-value,
 .income .item-delete-btn {
-    color: #28B9B5;
+    color: mediumseagreen;
 }
 
 .expenses .item-value,
