@@ -103,7 +103,12 @@ var UIController = (function () {
         inputValue: '.add-value',
         inputBtn: '.add-btn',
         incomeHtmlContainer: '.income-list',
-        expensesHtmlContainer: '.expenses-list'
+        expensesHtmlContainer: '.expenses-list',
+        budgetValue: '.budget-value',
+        budgetIncome: '.income-value',
+        budgetExpenses: '.expenses-value',
+        expensesPercentage: '.expenses-percentage'
+
     };
     return {
         getInput: function () {
@@ -157,7 +162,17 @@ var UIController = (function () {
             //Set Focus back to description
             fieldsArray[0].focus();
 
-            // console.log(fieldsArray);
+        }, displayBudget: function (data) {
+            document.querySelector(DOMStrings.budgetValue).textContent = data.budget;
+            document.querySelector(DOMStrings.budgetIncome).textContent = "+ " + "\u20AC" + data.totalInc;
+            document.querySelector(DOMStrings.budgetExpenses).textContent = "- " + "\u20AC" + data.totalExp;
+
+            if (data.percentage > 0) {
+                document.querySelector(DOMStrings.expensesPercentage).textContent = data.percentage + "%";
+            } else {
+                document.querySelector(DOMStrings.expensesPercentage).textContent = '---';
+            }
+
         }, getDomStrings: function () {
             return DOMStrings;
         }
@@ -184,9 +199,9 @@ var controller = (function (budgetCtrl, UICtrl) {
         //  2. Return Budget
         var budget = budgetCtrl.getBudget();
         //  3. Display the Budget on UI
-        console.log(budget);
-
+        UICtrl.displayBudget(budget);
     };
+
     // console.log(DOM);
     var ctrlAddItem = function () {
         var input, newItem;
@@ -217,6 +232,12 @@ var controller = (function (budgetCtrl, UICtrl) {
     return {
         init: function () {
             console.log("Application has Started");
+            UICtrl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: 0
+            });
             setupEventListeners();
         }
     }
