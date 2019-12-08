@@ -1,2 +1,4 @@
-# SimpleJavascriptBudgetApp
-A Simple Javascript Budget Application
+# **Simple Javascript Budget Application**
+
+## Application Flow Diagram
+![](images/Simple JavascriptBudget ApplicationFlow.png)
