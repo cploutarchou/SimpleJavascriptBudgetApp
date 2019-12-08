@@ -137,8 +137,8 @@ var UIController = (function () {
         budgetIncome: '.income-value',
         budgetExpenses: '.expenses-value',
         expensesPercentage: '.expenses-percentage',
-        container: '.container'
-
+        container: '.container',
+        expensesPercentageLabel: '.item-percentage'
     };
     return {
         getInput: function () {
@@ -205,8 +205,25 @@ var UIController = (function () {
             } else {
                 document.querySelector(DOMStrings.expensesPercentage).textContent = '---';
             }
+        },
 
-        }, getDomStrings: function () {
+        displayPercentages: function (percentages) {
+            var fields = document.querySelectorAll(DOMStrings.expensesPercentageLabel);
+            debugger;
+            var nodeListForeach = function (fields, callback) {
+                for (var i = 0; i < fields.length; i++) {
+                    callback(fields[i], i);
+                }
+            };
+            nodeListForeach(fields, function (currentField, indexValue) {
+                if (percentages[indexValue] > 0) {
+                    currentField.textContent = percentages[indexValue] + '%';
+                } else {
+                    currentField.textContent = "---";
+                }
+            })
+        },
+        getDomStrings: function () {
             return DOMStrings;
         }
     };
@@ -245,7 +262,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         // 2. Read Percentages from budget controller
         var percentages = budgetCtrl.getPercentages();
         // 3. Update UI with new percentages
-        console.log(percentages);
+        UICtrl.displayPercentages(percentages);
 
     };
     // console.log(DOM);
