@@ -140,6 +140,25 @@ var UIController = (function () {
         container: '.container',
         expensesPercentageLabel: '.item-percentage'
     };
+
+    var formatNumber = function (num, type) {
+        var numSplit, int, dec;
+
+        num = Math.abs(num);
+        num = num.toFixed(2);
+
+        numSplit = num.split('.');
+        int = numSplit[0];
+
+        if (int.length > 3) {
+            int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, int.length);
+        }
+
+        dec = '.' + numSplit[1];
+
+        return (type === 'exp' ? '-' : '+') + " " + int + dec;
+
+    };
     return {
         getInput: function () {
 
@@ -176,7 +195,7 @@ var UIController = (function () {
             //Replace placeholder text with actual data
             newHtml = html.replace('%id%', itemObj.id);
             newHtml = newHtml.replace('%description%', itemObj.description);
-            newHtml = newHtml.replace('%value%', itemObj.value);
+            newHtml = newHtml.replace('%value%', formatNumber(itemObj.value, type));
             //Insert Html into DOM
 
             element = document.querySelector(element);
