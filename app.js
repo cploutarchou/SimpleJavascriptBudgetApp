@@ -215,9 +215,10 @@ var UIController = (function () {
             fieldsArray[0].focus();
 
         }, displayBudget: function (data) {
-            document.querySelector(DOMStrings.budgetValue).textContent = data.budget;
-            document.querySelector(DOMStrings.budgetIncome).textContent = "+ " + "\u20AC" + data.totalInc;
-            document.querySelector(DOMStrings.budgetExpenses).textContent = "- " + "\u20AC" + data.totalExp;
+            data.budget > 0 ? type = 'inc' : type = 'exp';
+            document.querySelector(DOMStrings.budgetValue).textContent = formatNumber(data.budget, type);
+            document.querySelector(DOMStrings.budgetIncome).textContent = formatNumber(data.totalInc, 'inc');
+            document.querySelector(DOMStrings.budgetExpenses).textContent = formatNumber(data.totalExp, 'exp');
 
             if (data.percentage > 0) {
                 document.querySelector(DOMStrings.expensesPercentage).textContent = data.percentage + "%";
