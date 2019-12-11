@@ -37,10 +37,11 @@ body {
 
 .red {
     color: #FF5049 !important;
+    border: 2px;
 }
 
 .red-focus:focus {
-    border: 1px solid #FF5049 !important;
+    border: 2px solid #FF5049 !important;
 }
 
 /**********************************************
