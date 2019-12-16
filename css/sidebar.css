@@ -1,0 +1,56 @@
+/*
+ *  Created by Christos Ploutarchou.
+ *  Email : cploutarchou@gmail.com
+ *  Date: 17/12/19, 12:06 π.μ.
+ *  File : sidebar.css
+ *
+ */
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    overflow: auto;
+}
+
+.sidebar-item {
+    width: 100%;
+    display: block;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+}
+
+.sidebar-icon {
+    color: #ffffff;
+    background-color: transparent;
+    border: 0;
+}
+
+.sidebar-text {
+    font-size: 45px !important;
+}
+
+.sidebar-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+

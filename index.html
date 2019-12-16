@@ -11,14 +11,17 @@
 <head>
     <meta charset="UTF-8">
     <title>A Simple Javascript Budget Application </title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href=css/fonts.css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
     <link href="css/ionicons.css" rel="stylesheet" type="text/css">
+    <link href="css/sidebar.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script src="js/sweetalert.min.js" type="text/javascript"></script>
 </head>
 <body>
 <!--Sidebar Section-->
-<div class="sidebar bar-block">
+<div class="sidebar bar-block sidebar-border" id="sidebar" style="display: none">
+    <button class="sidebar-item sidebar-large" onclick="closeSidebar()">Close &times;</button>
     <a href="#">Item 1</a>
     <a href="#">Item 2</a>
     <a href="#">Item 3</a>
@@ -30,6 +33,7 @@
 
 <!--Index Page Header Section-->
 <div class="top">
+    <button class="sidebar-button sidebar-text sidebar-icon" onclick="openSidebar()">☰</button>
     <div class="budget">
         <div class="title">
             Available Budget in <span class="title-month">%Month%</span>:
@@ -98,5 +102,14 @@
 
 </div>
 <script src="app.js"></script>
+<script>
+    function openSidebar() {
+        document.getElementById("sidebar").style.display = "block";
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').style.display = "none";
+    }
+</script>
 </body>
 </html>
