@@ -139,8 +139,11 @@ var UIController = (function () {
         expensesPercentage: '.expenses-percentage',
         container: '.container',
         expensesPercentageLabel: '.item-percentage',
-        dateLabel: '.title-month'
+        dateLabel: '.title-month',
+        sidebarMonth: '.month',
+        sidebarYear: '.year'
     };
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     var formatNumber = function (num, type) {
         var numSplit, int, dec;
@@ -169,7 +172,7 @@ var UIController = (function () {
                 value: parseFloat(document.querySelector(DOMStrings.inputValue).value)
             };
         }, addListItem: function (itemObj, type) {
-            var html, newHtml, element, fields, fieldsArray;
+            var html, newHtml, element;
             if (type === 'inc') {
                 element = DOMStrings.incomeHtmlContainer;
 
@@ -248,8 +251,18 @@ var UIController = (function () {
             now = new Date();
             year = now.getFullYear();
             month = now.getMonth();
-            months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             document.querySelector(DOMStrings.dateLabel).textContent = months[month] + ' ' + year;
+        }, showSidebarMonths: function () {
+            var monthBtn;
+            months.forEach(function (e) {
+                console.log(e);
+                monthBtn = document.createElement('a');
+                monthBtn.href = '#';
+                monthBtn.classList = 'sidebar-item ' + 'sidebar-button ' + ' month';
+                monthBtn.text = e;
+                console.log(monthBtn);
+                document.getElementById('months').appendChild(monthBtn);
+            });
         }, changedType: function () {
             var fields = document.querySelectorAll(DOMStrings.inputType + ',' + DOMStrings.inputDescription + ',' + DOMStrings.inputValue);
             fields.forEach(function (e) {
@@ -351,6 +364,7 @@ var controller = (function (budgetCtrl, UICtrl) {
         init: function () {
             console.log("Application has Started");
             UICtrl.displayMonth();
+            UICtrl.showSidebarMonths();
             UICtrl.displayBudget({
                 budget: 0,
                 totalInc: 0,
