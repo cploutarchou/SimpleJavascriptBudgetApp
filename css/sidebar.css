@@ -24,6 +24,12 @@
     white-space: normal;
     float: none;
     outline: 0;
+    color: #555555;
+}
+
+.sidebar-item:hover {
+    background-color: #555555;
+    color: white;
 }
 
 .sidebar-icon {
@@ -52,6 +58,8 @@
 
 .sidebar-large {
     font-size: 18px !important;
+    background-color: #555555;
+    color: white;
 }
 
 button, [type="button"], [type="reset"], [type="submit"] {
